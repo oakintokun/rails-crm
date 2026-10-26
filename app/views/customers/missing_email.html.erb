@@ -9,6 +9,10 @@
   </nav>
 
   <div class="customers-grid">
-    <%= render partial: "customer", collection: @customers %>
+    <% if @customers.any? %>
+  <%= render @customers %>
+<% else %>
+  <p class="empty-message">All customers have email addresses. No missing emails found!</p>
+<% end %>
   </div>
 </div>

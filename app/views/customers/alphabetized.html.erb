@@ -9,6 +9,10 @@
   </nav>
 
   <div class="customers-grid">
-    <%= render partial: "customer", collection: @customers %>
+    <% if @customers.any? %>
+  <%= render @customers %>
+<% else %>
+  <p class="empty-message">No customers available to display alphabetically.</p>
+<% end %>
   </div>
 </div>

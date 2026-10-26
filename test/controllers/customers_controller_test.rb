@@ -68,3 +68,4 @@ test "should display only customers with missing emails" do
   assert_select ".customer-card h2", text: "Jane Doe", count: 0
 end
 
+end
