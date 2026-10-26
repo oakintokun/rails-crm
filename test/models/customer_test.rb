@@ -51,4 +51,20 @@ class CustomerTest < ActiveSupport::TestCase
     assert_not customer.valid?
     assert customer.errors[:email_address].any?
   end
+
+  test "customer can have an image attached" do
+    customer = Customer.new(
+      full_name: "Jane Doe",
+      phone_number: "204-555-1234"
+    )
+
+    customer.image.attach(
+      io: StringIO.new("test image content"),
+      filename: "profile.jpg",
+      content_type: "image/jpeg"
+    )
+
+    assert customer.image.attached?
+    assert_equal "profile.jpg", customer.image.filename.to_s
+  end
 end
