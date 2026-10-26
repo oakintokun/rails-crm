@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CRM Customer Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        color: #333;
+      }
+
+      .customers-container {
+        max-width: 1200px;
+        margin: 35px auto;
+        padding: 0 20px;
+      }
+
+      .customers-container h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .customer-navigation {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+      }
+
+      .customer-navigation a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+
+      .customers-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .customer-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .customer-card h2 {
+        font-size: 18px;
+        margin: 0 0 18px;
+      }
+
+      .customer-image {
+        display: block;
+        width: 100%;
+        height: 205px;
+        object-fit: cover;
+        border-radius: 3px;
+        margin-bottom: 20px;
+      }
+
+      .customer-card p {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+        overflow-wrap: anywhere;
+      }
+
+      @media (max-width: 900px) {
+        .customers-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 500px) {
+        .customers-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
+

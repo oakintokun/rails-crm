@@ -1,0 +1,14 @@
+
+<div class="customers-container">
+  <h1>Alphabetized Customers</h1>
+
+  <nav class="customer-navigation">
+    <%= link_to "All Customers", root_path %>
+    <%= link_to "Alphabetized Customers", customers_alphabetized_path %>
+    <%= link_to "Missing Email", customers_missing_email_path %>
+  </nav>
+
+  <div class="customers-grid">
+    <%= render partial: "customer", collection: @customers %>
+  </div>
+</div>
