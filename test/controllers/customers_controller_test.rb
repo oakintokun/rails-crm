@@ -18,10 +18,27 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
     assert_select "p", text: /jane@example.com/
   end
 
-  test "should get alphabetized" do
-    get customers_alphabetized_url
-    assert_response :success
-  end
+  
+test "should display customers in alphabetical order" do
+  Customer.create!(
+    full_name: "Zara Williams",
+    phone_number: "204-555-1111"
+  )
+
+  Customer.create!(
+    full_name: "Alice Brown",
+    phone_number: "204-555-2222"
+  )
+
+  get customers_alphabetized_url
+
+  assert_response :success
+
+  names = css_select(".customer-card h2").map(&:text)
+
+  assert_operator names.index("Alice Brown"), :<, names.index("Zara Williams")
+end
+
 
   test "should get missing_email" do
     get customers_missing_email_url
