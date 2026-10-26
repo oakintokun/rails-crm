@@ -1,6 +1,10 @@
+
 <div class="customer-card">
   <% if customer.image.attached? %>
-    <%= image_tag customer.image, alt: customer.full_name, class: "customer-image" %>
+    <%= image_tag customer.image,
+                  alt: "Profile photo of #{customer.full_name}",
+                  class: "customer-image",
+                  loading: "lazy" %>
   <% else %>
     <p>No image available</p>
   <% end %>
